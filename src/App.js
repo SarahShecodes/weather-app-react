@@ -1,6 +1,5 @@
 import React from "react";
 import Weather from "./Weather";
-import { Bars } from "react-loader-spinner";
 
 import "./App.css";
 
