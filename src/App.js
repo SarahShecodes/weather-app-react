@@ -11,7 +11,11 @@ function App() {
       <footer>
         {" "}
         Created by Sarah Nafice and is an
-        <a href="https://github.com/SarahShecodes/weather-app-react">
+        <a
+          href="https://github.com/SarahShecodes/weather-app-react"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {" "}
           Open-source code
         </a>{" "}
