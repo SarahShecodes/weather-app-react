@@ -8,6 +8,14 @@ function App() {
         <h1>Weather App</h1>
         <Weather />
       </header>
+      <footer>
+        {" "}
+        Created by Sarah Nafice and is an
+        <a href="https://github.com/SarahShecodes/weather-app-react">
+          {" "}
+          Open-source code
+        </a>{" "}
+      </footer>
     </div>
   );
 }
