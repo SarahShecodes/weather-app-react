@@ -1,5 +1,6 @@
 import React from "react";
 import Weather from "./Weather";
+import { Bars } from "react-loader-spinner";
 
 import "./App.css";
 
@@ -8,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Hello World</h1>
-        <Weather city="lisbon" />
+        <Weather city="tangier" />
       </header>
     </div>
   );

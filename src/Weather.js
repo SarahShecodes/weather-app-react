@@ -1,11 +1,24 @@
 import React from "react";
 import axios from "axios";
-
-export default function Weather() {
+import { Bars } from "react-loader-spinner";
+export default function Weather(props) {
   function handleResponse(response) {
-    alert(`The weather in Lisbon is ${response.data.main.temp}ºC`);
+    alert(
+      `The weather in ${response.data.name} is ${response.data.main.temp}ºC`
+    );
   }
   let apiKey = "094780c710fa4efd669f0df8c3991927";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
-  return <h2>Hello from Weather</h2>;
+  axios.get(apiUrl).then(handleResponse);
+  return (
+    <Bars
+      height="80"
+      width="80"
+      color="#4fa94d"
+      ariaLabel="bars-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+    />
+  );
 }
