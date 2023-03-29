@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Weather.css";
 import { MagnifyingGlass } from "react-loader-spinner";
 
-export default function Weather() {
+export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   function handleResponse(response) {
@@ -64,8 +64,8 @@ export default function Weather() {
     );
   } else {
     const apiKey = "094780c710fa4efd669f0df8c3991927";
-    let city = "Madrid";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return (
