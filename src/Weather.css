@@ -1,11 +1,11 @@
 .Weather {
-  border: 2px solid #dadde1;
+  border: 2px solid #f3e7c2;
   border-radius: 6px;
   font-family: sans-serif;
   padding: 16px;
 
   color: white;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
     url("bg2.jpg");
   background-size: cover;
   background-position: center;
