@@ -1,73 +1,44 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { MagnifyingGlass } from "react-loader-spinner";
+import React from "react";
+import "./Weather.css";
 
 export default function Weather() {
-  let [city, setCity] = useState("");
-  let [info, setInfo] = useState({});
-  const [loaded, setLoaded] = useState(false);
-
-  function Weather(response) {
-    setLoaded(true);
-    setInfo({
-      temperature: response.data.main.temp,
-      wind: response.data.wind.speed,
-      humidity: response.data.main.humidity,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      description: response.data.weather[0].description,
-    });
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    let apiKey = "7e977d5c64e3857ddc3fd8233d003772";
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(url).then(Weather);
-  }
-
-  function updateCity(event) {
-    setCity(event.target.value);
-  }
-
-  let form = (
-    <form onSubmit={handleSubmit}>
-      <input type="search" placeholder="Type a city" onChange={updateCity} />
-      <input type="submit" value="Search" />
-    </form>
+  return (
+    <div className="Weather">
+      <form>
+        <div className="row">
+          <div className="col-9">
+            <input
+              type="search"
+              placeholder="Enter a city..."
+              className="form-control"
+            />
+          </div>
+          <div className="col-3">
+            <input type="submit" value="Search" className="btn btn-primary" />
+          </div>
+        </div>
+      </form>
+      <h1>Lisbon</h1>
+      <ul>
+        <li>Wednesday 07:00</li>
+        <li>Sunny</li>
+      </ul>
+      <div className="row">
+        <div className="col-6">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAUhJREFUeNrt230NgzAQh2GkIAUJyJgMJCABCZNQKcxBHdyOpFkyEkYGV9oL75Lff2Rwz8pXe2tEpLlzGgAAAAAAAAAAYHsDg4+8Hp1m0ATNrJGNzGmbZdvOZN+lAFLRkyb+KHgvMX1H5wYgFR5OFL2VcATiMgA9uFbzzFD4Oss+2qoA9ID6k0P9yKnRVwGgBzJeWPg6Y1GAdIGSwpmKAFRS/C5CFoDCw/6v08EcIF3wpNL0WQHSrS5WDBDXt0hrgGfFxX+eE7IApCc8cZIuB0BwBBBMAZz9+l+jwApgcggwWQJEhwDRBMDp8P+cBhYAg2OAwQIgOAYIFgCzY4DZAkBcB4C7AywvcIwAAADgNsiDEI/CvAzxOsyECFNiTIoyLc7CCEtjLI6yPE6DBC0yNEnRJkejJK2yNEvTLs8fJgAAAAAAAADg1nkDlR7XfJiH1ggAAAAASUVORK5CYII="
+            alt="Sunny"
+          />
+          22º C
+        </div>
+        <div className="col-6">
+          <ul>
+            <li>Precipitation: 15%</li>
+            <li>Humidity: 72%</li>
+            <li>Wind: 13km/h</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   );
-
-  if (loaded) {
-    return (
-      <div>
-        {form}
-
-        <ul>
-          <li>Temperature: {Math.round(info.temperature)}°C</li>
-          <li>Description: {info.description}</li>
-          <li>Humidity: {info.humidity}%</li>
-          <li>Wind: {info.wind}km/h</li>
-          <li>
-            <img src={info.icon} alt={info.description} />
-          </li>
-        </ul>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        {" "}
-        {form}
-        <MagnifyingGlass
-          height="80"
-          width="80"
-          ariaLabel="MagnifyingGlass-loading"
-          wrapperStyle={{}}
-          wrapperClass="progress-bar-wrapper"
-          glassColor="#c0efff"
-          color="#313f4b"
-          timeout={3000}
-        />
-      </div>
-    );
-  }
 }
