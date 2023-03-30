@@ -32,9 +32,10 @@
   list-style: none;
 }
 
-.Weather img {
+.Weather camvas {
   float: left;
   margin-right: 10px;
+  margin-top: 5px;
   width: 70px;
 }
 .Weather .temperature {
